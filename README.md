@@ -2,6 +2,8 @@
 
 Lupa means *Magnifier* in spanish.
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns. It's Framework and ORM agnostic.
 
 ## Search Class
@@ -31,7 +33,7 @@ class ProductsController < ApplicationController
   def index
     @products = ProductSearch.new(current_user.products).search(search_params)
   end
-  
+
   protected
     def search_params
       params.permit(:name, :category, created_between: [:start_date, :end_date])
@@ -75,32 +77,32 @@ Inside your **Scope** class you must define your scope methods. You'll also be a
 class ProductSearch < Lupa::Search
   # Scope class holds all your search methods.
   class Scope
-  
+
     # Search method
     def name
       if search_attributes[:name].present?
         scope.where('name LIKE ?', "%#{search_attributes[:name]}%")
       end
     end
-    
+
     # Search method
     def created_between
       if created_start_date && created_end_date
         scope.where(created_at: created_start_date..created_end_date)
       end
     end
-    
+
     # Search method
     def category
-      scope.where(category_id: search_attributes[:category])    
+      scope.where(category_id: search_attributes[:category])
     end
-    
+
     private
       # Parses search_attributes[:created_between][:start_date]
       def created_start_date
         search_attributes[:created_between] && search_attributes[:created_between][:start_date].try(:to_date)
       end
-      
+
       # Parses search_attributes[:created_between][:end_date]
       def created_end_date
         search_attributes[:created_between] && search_attributes[:created_between][:end_date].try(:to_date)
@@ -165,7 +167,7 @@ class ProductSearch < Lupa::Search
   class Scope
     ...
   end
-  
+
   # Be careful not to change the scope variable name,
   # otherwise you will experiment some issues.
   def initialize(scope = Product.all)
@@ -194,7 +196,7 @@ class ProductSearch < Lupa::Search
   class Scope
     ...
   end
-  
+
   # This should always return a hash
   def default_search_attributes
     { category: 23 }
@@ -221,27 +223,27 @@ A common example is searching records created between two dates. So lets create 
 
 class CreatedAtSearch < Lupa::Search
   class Scope
-  
+
     def created_before
       ...
     end
-    
+
     def created_after
       ...
     end
- 
+
     def created_between
       if created_start_date && created_end_date
         scope.where(created_at: created_start_date..created_end_date)
       end
     end
-  
+
     private
 
       def created_start_date
         search_attributes[:created_between] && search_attributes[:created_between][:start_date].try(:to_date)
       end
-      
+
       def created_end_date
         search_attributes[:created_between] && search_attributes[:created_between][:end_date].try(:to_date)
       end
@@ -256,22 +258,22 @@ Now we can use it in our **ProductSearch** class:
 
 class ProductSearch < Lupa::Search
   class Scope
-  
+
     def name
       ...
     end
-    
+
     # We use CreatedAtSearch class to perform the search
     def created_between
       if search_attributes[:created_between]
         CreadtedAtSearch.new(scope).search(created_between: search_attributes[:created_between])
       end
     end
-    
+
     def category
       ...
     end
-    
+
   end
 end
 ```
