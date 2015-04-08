@@ -2,7 +2,7 @@
 
 Lupa means *Magnifier* in spanish.
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns. It's Framework and ORM agnostic.
 
