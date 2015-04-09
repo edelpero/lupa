@@ -96,27 +96,10 @@ class ProductSearch < Lupa::Search
     end
 
     # Search method
-    def created_between
-      if created_start_date && created_end_date
-        scope.where(created_at: created_start_date..created_end_date)
-      end
-    end
-
-    # Search method
     def category
       scope.where(category_id: search_attributes[:category])
     end
 
-    private
-      # Parses search_attributes[:created_between][:start_date]
-      def created_start_date
-        search_attributes[:created_between] && search_attributes[:created_between][:start_date].try(:to_date)
-      end
-
-      # Parses search_attributes[:created_between][:end_date]
-      def created_end_date
-        search_attributes[:created_between] && search_attributes[:created_between][:end_date].try(:to_date)
-      end
   end
 end
 ```
@@ -258,10 +241,12 @@ class CreatedAtSearch < Lupa::Search
 
     private
 
+      # Parses search_attributes[:created_between][:start_date]
       def created_start_date
         search_attributes[:created_between] && search_attributes[:created_between][:start_date].try(:to_date)
       end
 
+      # Parses search_attributes[:created_between][:end_date]
       def created_end_date
         search_attributes[:created_between] && search_attributes[:created_between][:end_date].try(:to_date)
       end
