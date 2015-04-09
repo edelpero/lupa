@@ -2,22 +2,22 @@
 
 Lupa means *Magnifier* in spanish.
 
-[![Build Status](https://travis-ci.org/edelpero/lupa.svg?branch=master)](https://travis-ci.org/edelpero/lupa) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Inline docs](http://inch-ci.org/github/edelpero/lupa.svg?branch=master)](http://inch-ci.org/github/edelpero/lupa) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](https://travis-ci.org/edelpero/lupa.svg?branch=master)](https://travis-ci.org/edelpero/lupa) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Inline docs](http://inch-ci.org/github/edelpero/lupa.svg?branch=master)](http://inch-ci.org/github/edelpero/lupa)
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns.
 
 Lupa it's Framework and ORM agnostic. It will work with any ORM or Object that can build a query using **chained method calls**, like ActiveRecord: `
-Product.where(name: 'Digital').where(category: 23).limit(2)`.
+Product.where(name: 'Digital').where(category: '23').limit(2)`.
 
-Table of Contents:
+**Table of Contents:**
 
 * [Search Class](https://github.com/edelpero/lupa#search-class)
-    * [Usage](https://github.com/edelpero/lupa#usage)
-    * [Definition](https://github.com/edelpero/lupa#usage)
+    * [Overview](https://github.com/edelpero/lupa#overview)
+    * [Definition](https://github.com/edelpero/lupa#definition)
     * [Public Methods](https://github.com/edelpero/lupa#public-methods)
-* [Default Search Scope](https://github.com/edelpero/lupa#default-search-scope)
-* [Default Search Attributes](https://github.com/edelpero/lupa#default-search-attributes)
-* [Combining Search Classes](https://github.com/edelpero/lupa#combining-search-classes)
+    * [Default Search Scope](https://github.com/edelpero/lupa#default-search-scope)
+    * [Default Search Attributes](https://github.com/edelpero/lupa#default-search-attributes)
+    * [Combining Search Classes](https://github.com/edelpero/lupa#combining-search-classes)
 * [Usage with Rails](https://github.com/edelpero/lupa#usage-with-rails)
 * [Testing](https://github.com/edelpero/lupa#testing)
     * [Testing Default Scope](https://github.com/edelpero/lupa#testing-default-scope)
@@ -28,17 +28,17 @@ Table of Contents:
 
 ## Search Class
 
-### Usage
+### Overview
 
 ```ruby
-# Define a Search
-products = ProductSearch.new(current_shop.products).search(name: 'digital', category: '23')
+products = ProductSearch.new(current_user.products).search(name: 'digital', category: '23')
 
 # Iterate over the search results
 products.each do |product|
   # Your logic goes here
 end
 ```
+Calling **.each** on the instance will build a search by chaining calls to **name** and **category** methods defined in our **ProductSearch::Scope** class.
 
 ```ruby
 # app/searches/product_search.rb
@@ -166,7 +166,7 @@ search.unexisting_method
 # => Lupa::ResultMethodNotImplementedError: The resulting scope does not respond to unexisting_method method.
 ```
 
-## Default Search Scope
+### Default Search Scope
 
 You can define a default search scope if you want to use a search class with an specific resource by overriding the initialize method as follows:
 
@@ -195,7 +195,7 @@ search.first
 # => #<Product id: 1, name: 'Eames Chair', category_id: 23, created_at: "2015-04-06 18:54:13", updated_at: "2015-04-06 18:54:13" >
 ```
 
-## Default Search Attributes
+### Default Search Attributes
 
 Defining default search attributes will cause the scope method to be invoked always.
 
@@ -222,7 +222,7 @@ search.search_attributes
 # => { name: 'chair', category: 42 }
 ```
 
-## Combining Search Classes
+### Combining Search Classes
 
 You can reuse your search class in order to keep them DRY.
 
@@ -290,7 +290,9 @@ end
 
 ## Usage with Rails
 
-- Define a custom form:
+### Forms
+
+Define a custom form:
 
 ```haml
 # app/views/products/_search.html.haml
@@ -302,7 +304,10 @@ end
   = date_field_tag 'created_between[end_date]'
   = submit_tag :search
 ```
-- Create a new instance of your search class and pass a collection to which all search conditions will be applied and specify the search params you want to apply:
+
+### Controllers
+
+Create a new instance of your search class and pass a collection to which all search conditions will be applied and specify the search params you want to apply:
 
 ```ruby
 # app/controllers/products_controller.rb
