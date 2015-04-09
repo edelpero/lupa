@@ -2,7 +2,7 @@
 
 Lupa means *Magnifier* in spanish.
 
-[![Build Status](https://travis-ci.org/edelpero/lupa.svg?branch=master)](https://travis-ci.org/edelpero/lupa) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](https://travis-ci.org/edelpero/lupa.svg?branch=master)](https://travis-ci.org/edelpero/lupa) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Inline docs](http://inch-ci.org/github/edelpero/lupa.svg?branch=master)](http://inch-ci.org/github/edelpero/lupa) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/edelpero/lupa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns. It's Framework and ORM agnostic.
 
