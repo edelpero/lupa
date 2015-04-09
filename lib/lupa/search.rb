@@ -314,9 +314,18 @@ module Lupa
       #
       # Sets @search_attributes by merging default search attributes with the ones passed to search method.
       def set_search_attributes(attributes)
+        attributes = merge_search_attributes(attributes)
         attributes = symbolize_keys(attributes)
         attributes = remove_blank_attributes(attributes)
-        @search_attributes = default_search_attributes.merge(attributes)
+
+        @search_attributes = attributes
+      end
+
+      # Internal: Merge search attributes with default search attributes
+      def merge_search_attributes(attributes)
+        return default_search_attributes.merge(attributes) if default_search_attributes.kind_of?(Hash)
+
+        raise Lupa::DefaultSearchAttributesError, "default_search_attributes doesn't return a Hash."
       end
 
       # Internal: Symbolizes all keys passed to the search attributes.

@@ -32,6 +32,22 @@ class ClassWithoutDefaultSearchAttributesSearch < Lupa::Search
 
 end
 
+class ClassWithInvalidDefaultSearchAttributesSearch < Lupa::Search
+
+  class Scope
+    def reverse; end
+  end
+
+  def initialize(scope = [1, 2, 3, 4])
+    @scope = scope
+  end
+
+  def default_search_attributes
+    1
+  end
+
+end
+
 
 describe Lupa::Search do
   before do
@@ -59,6 +75,12 @@ describe Lupa::Search do
         params = {}
         search = ClassWithoutDefaultSearchAttributesSearch.search({})
         search.default_search_attributes.must_equal params
+      end
+    end
+
+    context 'when default_search_attributes does not return a Hash' do
+      it 'raises a Lupa::DefaultSearchAttributesError exception' do
+        proc { ClassWithInvalidDefaultSearchAttributesSearch.search({}).results }.must_raise Lupa::DefaultSearchAttributesError
       end
     end
   end
