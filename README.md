@@ -6,6 +6,23 @@ Lupa means *Magnifier* in spanish.
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns. It's Framework and ORM agnostic.
 
+Table of Contents:
+
+* [Search Class](https://github.com/edelpero/lupa#search-class)
+    * [Usage](https://github.com/edelpero/lupa#usage)
+    * [Definition](https://github.com/edelpero/lupa#usage)
+    * [Public Methods](https://github.com/edelpero/lupa#public-methods)
+* [Default Search Scope](https://github.com/edelpero/lupa#default-search-scope)
+* [Default Search Attributes](https://github.com/edelpero/lupa#default-search-attributes)
+* [Combining Search Classes](https://github.com/edelpero/lupa#combining-search-classes)
+* [Usage with Rails](https://github.com/edelpero/lupa#usage-with-rails)
+* [Testing](https://github.com/edelpero/lupa#testing)
+    * [Testing Default Scope](https://github.com/edelpero/lupa#testing-default-scope)
+    * [Testing Default Search Attributes](https://github.com/edelpero/lupa#testing-default-search-attributes)
+    * [Testing Each Scope Method Individually](https://github.com/edelpero/lupa#testing-each-scope-method-individually)
+* [Installation](https://github.com/edelpero/lupa#installation)
+
+
 ## Search Class
 
 ### Usage
