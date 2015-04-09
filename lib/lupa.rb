@@ -2,6 +2,7 @@ require "lupa/version"
 
 module Lupa
   DefaultScopeError               = Class.new(StandardError)
+  DefaultSearchAttributesError    = Class.new(StandardError)
   ScopeMethodNotImplementedError  = Class.new(NotImplementedError)
   ResultMethodNotImplementedError = Class.new(NotImplementedError)
   SearchAttributesError           = Class.new(StandardError)
