@@ -209,10 +209,18 @@ class ProductSearch < Lupa::Search
 
   # This should always return a hash
   def default_search_attributes
-    { category: 23 }
+    { category: '23' }
   end
 end
 ```
+
+```ruby
+search = ProductSearch.new(current_user.products).search(name: 'chair')
+
+search.search_attributes
+# => { name: 'chair', category: '23' }
+```
+
 **<u>Note:</u>** You can override default search attributes by passing it to the search params.
 
 ``` ruby
