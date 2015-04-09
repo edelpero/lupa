@@ -227,7 +227,7 @@ search.search_attributes
 search = ProductSearch.new(current_user.products).search(name: 'chair', category: '42')
 
 search.search_attributes
-# => { name: 'chair', category: 42 }
+# => { name: 'chair', category: '42' }
 ```
 
 ### Combining Search Classes
