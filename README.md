@@ -10,47 +10,37 @@ Lupa lets you create simple, robust and scaleable search filters with ease using
 
 ### Usage
 
-The example will explain how to use the class on a Rails application:
-
-- Define a custom form:
-
-```haml
-# app/views/products/_search.html.haml
-
-= form_tag products_path, method: :get do
-  = text_field_tag 'name'
-  = select_tag 'category', options_from_collection_for_select(@categories, 'id', 'name')
-  = date_field_tag 'created_between[start_date]'
-  = date_field_tag 'created_between[end_date]'
-  = submit_tag :search
-```
-- Create a new instance of your search class and pass a collection to which all search conditions will be applied and specify the search params you want to apply:
-
 ```ruby
-# app/controllers/products_controller.rb
+# Define a Search
+products = ProductSearch.new(current_shop.products).search(name: 'digital', category: '23')
 
-class ProductsController < ApplicationController
-  def index
-    @products = ProductSearch.new(current_user.products).search(search_params)
-  end
-
-  protected
-    def search_params
-      params.permit(:name, :category, created_between: [:start_date, :end_date])
-    end
+# Iterate over the search results
+products.each do |product|
+  # Your logic goes here
 end
 ```
-- Loop through the search results on your view.
 
-```haml
-# app/views/products/index.html.haml
+```ruby
+# app/searches/product_search.rb
 
-%h1 Products
+class ProductSearch < Lupa::Search
+  # Scope class holds all your search methods.
+  class Scope
 
-%ul
-  - @products.each do |product|
-    %li
-      = "#{product.name} - #{product.price} - #{product.category}"
+    # Search method
+    def name
+      if search_attributes[:name].present?
+        scope.where('name iLIKE ?', "%#{search_attributes[:name]}%")
+      end
+    end
+
+    # Search method
+    def category
+      scope.where(category_id: search_attributes[:category])
+    end
+
+  end
+end
 ```
 
 ### Definition
@@ -67,7 +57,7 @@ end
 Inside your **Scope** class you must define your scope methods. You'll also be able to access to the following methods inside your scope class: **scope** and **search_attributes**.
 
 * **`scope:`** returns the current scope when the scope method is called.
-* **`search_attributes:`** returns a hash containing the all search attributes specified.
+* **`search_attributes:`** returns a hash containing the all search attributes specified including the default ones.
 
 <u>**Note:**</u> All keys of **`search_attributes`** are symbolized.
 
@@ -276,6 +266,49 @@ class ProductSearch < Lupa::Search
 
   end
 end
+```
+
+## Usage with Rails
+
+- Define a custom form:
+
+```haml
+# app/views/products/_search.html.haml
+
+= form_tag products_path, method: :get do
+  = text_field_tag 'name'
+  = select_tag 'category', options_from_collection_for_select(@categories, 'id', 'name')
+  = date_field_tag 'created_between[start_date]'
+  = date_field_tag 'created_between[end_date]'
+  = submit_tag :search
+```
+- Create a new instance of your search class and pass a collection to which all search conditions will be applied and specify the search params you want to apply:
+
+```ruby
+# app/controllers/products_controller.rb
+
+class ProductsController < ApplicationController
+  def index
+    @products = ProductSearch.new(current_user.products).search(search_params)
+  end
+
+  protected
+    def search_params
+      params.permit(:name, :category, created_between: [:start_date, :end_date])
+    end
+end
+```
+- Loop through the search results on your view.
+
+```haml
+# app/views/products/index.html.haml
+
+%h1 Products
+
+%ul
+  - @products.each do |product|
+    %li
+      = "#{product.name} - #{product.price} - #{product.category}"
 ```
 
 ## Testing
