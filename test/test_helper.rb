@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'minitest/autorun'
 
 def context(*args, &block)
