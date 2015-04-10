@@ -23,6 +23,7 @@ Product.where(name: 'Digital').where(category: '23').limit(2)`.
     * [Testing Default Scope](https://github.com/edelpero/lupa#testing-default-scope)
     * [Testing Default Search Attributes](https://github.com/edelpero/lupa#testing-default-search-attributes)
     * [Testing Each Scope Method Individually](https://github.com/edelpero/lupa#testing-each-scope-method-individually)
+* [Benchmarks](https://github.com/edelpero/lupa#benchmarks)
 * [Installation](https://github.com/edelpero/lupa#installation)
 
 
@@ -316,7 +317,9 @@ class ProductsController < ApplicationController
     end
 end
 ```
-- Loop through the search results on your view.
+### Views
+
+Loop through the search results on your view.
 
 ```haml
 # app/views/products/index.html.haml
@@ -452,6 +455,27 @@ describe ProductSearch do
   end
 end
 ```
+
+## Benchmarks
+
+I used [benchmark-ips](https://github.com/evanphx/benchmark-ips).
+
+This are the results of Lupa against [Searchlight](https://github.com/nathanl/searchlight).
+
+```
+Calculating -------------------------------------
+                lupa   480.000  i/100ms
+         searchlight   232.000  i/100ms
+-------------------------------------------------
+                lupa      7.273k (±25.1%) i/s -    689.280k
+         searchlight      2.665k (±14.1%) i/s -    260.072k
+
+Comparison:
+                lupa:     7273.5 i/s
+         searchlight:     2665.4 i/s - 2.73x slower
+```
+
+*If you know about another gem that was not included on the benchmark, feel free to run the benchmarks and send a Pull Request.*
 
 ## Installation
 
