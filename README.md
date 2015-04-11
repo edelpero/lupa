@@ -163,7 +163,7 @@ class ProductSearch < Lupa::Search
   end
 
   # Be careful not to change the scope variable name,
-  # otherwise you will experiment some issues.
+  # otherwise you will experience issues.
   def initialize(scope = Product.all)
     @scope = scope
   end
