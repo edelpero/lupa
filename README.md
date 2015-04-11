@@ -269,11 +269,9 @@ class ProductSearch < Lupa::Search
     # Be sure to always call `results` method on your composed
     # search class.
     def created_between
-      if search_attributes[:created_between]
-        CreadtedAtSearch.new(scope).
-          search(created_between: search_attributes[:created_between]).
-          results
-      end
+      CreadtedAtSearch.new(scope).
+        search(created_between: search_attributes[:created_between]).
+        results
     end
 
     def category
