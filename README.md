@@ -240,12 +240,14 @@ class CreatedAtSearch < Lupa::Search
 
       # Parses search_attributes[:created_between][:start_date]
       def created_start_date
-        search_attributes[:created_between] && search_attributes[:created_between][:start_date].try(:to_date)
+        search_attributes[:created_between] &&
+        search_attributes[:created_between][:start_date].try(:to_date)
       end
 
       # Parses search_attributes[:created_between][:end_date]
       def created_end_date
-        search_attributes[:created_between] && search_attributes[:created_between][:end_date].try(:to_date)
+        search_attributes[:created_between] &&
+        search_attributes[:created_between][:end_date].try(:to_date)
       end
   end
 end
@@ -268,7 +270,9 @@ class ProductSearch < Lupa::Search
     # search class.
     def created_between
       if search_attributes[:created_between]
-        CreadtedAtSearch.new(scope).search(created_between: search_attributes[:created_between]).results
+        CreadtedAtSearch.new(scope).
+          search(created_between: search_attributes[:created_between]).
+          results
       end
     end
 
@@ -279,7 +283,7 @@ class ProductSearch < Lupa::Search
   end
 end
 ```
-**Note:** If you are combining search classes. Be sure to always call `results` method on the search classes composing your main search class.
+**Note:** If you are combining search classes. Be sure to always call **results** method on the search classes composing your main search class.
 
 ## Usage with Rails
 
