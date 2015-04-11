@@ -50,9 +50,7 @@ class ProductSearch < Lupa::Search
 
     # Search method
     def name
-      if search_attributes[:name].present?
-        scope.where('name iLIKE ?', "%#{search_attributes[:name]}%")
-      end
+      scope.where('name iLIKE ?', "%#{search_attributes[:name]}%")
     end
 
     # Search method
@@ -91,9 +89,7 @@ class ProductSearch < Lupa::Search
 
     # Search method
     def name
-      if search_attributes[:name].present?
-        scope.where('name LIKE ?', "%#{search_attributes[:name]}%")
-      end
+      scope.where('name LIKE ?', "%#{search_attributes[:name]}%")
     end
 
     # Search method
@@ -267,10 +263,12 @@ class ProductSearch < Lupa::Search
       ...
     end
 
-    # We use CreatedAtSearch class to perform the search
+    # We use CreatedAtSearch class to perform the search.
+    # Be sure to always call `results` method on your composed
+    # search class.
     def created_between
       if search_attributes[:created_between]
-        CreadtedAtSearch.new(scope).search(created_between: search_attributes[:created_between])
+        CreadtedAtSearch.new(scope).search(created_between: search_attributes[:created_between]).results
       end
     end
 
@@ -281,6 +279,7 @@ class ProductSearch < Lupa::Search
   end
 end
 ```
+**Note:** If you are combining search classes. Be sure to always call `results` method on the search classes composing your main search class.
 
 ## Usage with Rails
 
