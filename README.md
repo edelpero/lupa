@@ -24,6 +24,8 @@ Product.where(name: 'Digital').where(category: '23').limit(2)`.
     * [Testing Default Search Attributes](https://github.com/edelpero/lupa#testing-default-search-attributes)
     * [Testing Each Scope Method Individually](https://github.com/edelpero/lupa#testing-each-scope-method-individually)
 * [Benchmarks](https://github.com/edelpero/lupa#benchmarks)
+    * [Lupa vs HasScope](#lupa-vs.-hasscope)
+    * [Lupa vs Searchlight](#lupa-vs.-searchlight)
 * [Installation](https://github.com/edelpero/lupa#installation)
 
 
@@ -461,7 +463,22 @@ end
 
 I used [benchmark-ips](https://github.com/evanphx/benchmark-ips).
 
-This are the results of Lupa against [Searchlight](https://github.com/nathanl/searchlight).
+### Lupa vs. [HasScope](https://github.com/plataformatec/has_scope)
+
+```
+Calculating -------------------------------------
+                lupa   265.000  i/100ms
+           has_scope   254.000  i/100ms
+-------------------------------------------------
+                lupa      3.526k (±24.7%) i/s -     67.045k
+           has_scope      3.252k (±24.8%) i/s -     61.976k
+
+Comparison:
+                lupa:     3525.8 i/s
+           has_scope:     3252.0 i/s - 1.08x slower
+```
+
+### Lupa vs. [Searchlight](https://github.com/nathanl/searchlight)
 
 ```
 Calculating -------------------------------------
