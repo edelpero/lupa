@@ -11,22 +11,22 @@ Product.where(name: 'Digital').where(category: '23').limit(2)`.
 
 **Table of Contents:**
 
-* [Search Class](https://github.com/edelpero/lupa#search-class)
-    * [Overview](https://github.com/edelpero/lupa#overview)
-    * [Definition](https://github.com/edelpero/lupa#definition)
-    * [Public Methods](https://github.com/edelpero/lupa#public-methods)
-    * [Default Search Scope](https://github.com/edelpero/lupa#default-search-scope)
-    * [Default Search Attributes](https://github.com/edelpero/lupa#default-search-attributes)
-    * [Combining Search Classes](https://github.com/edelpero/lupa#combining-search-classes)
-* [Usage with Rails](https://github.com/edelpero/lupa#usage-with-rails)
-* [Testing](https://github.com/edelpero/lupa#testing)
-    * [Testing Default Scope](https://github.com/edelpero/lupa#testing-default-scope)
-    * [Testing Default Search Attributes](https://github.com/edelpero/lupa#testing-default-search-attributes)
-    * [Testing Each Scope Method Individually](https://github.com/edelpero/lupa#testing-each-scope-method-individually)
-* [Benchmarks](https://github.com/edelpero/lupa#benchmarks)
-    * [Lupa vs HasScope](#lupa-vs.-hasscope)
-    * [Lupa vs Searchlight](#lupa-vs.-searchlight)
-* [Installation](https://github.com/edelpero/lupa#installation)
+* [Search Class](#search-class)
+    * [Overview](#overview)
+    * [Definition](#definition)
+    * [Public Methods](#public-methods)
+    * [Default Search Scope](#default-search-scope)
+    * [Default Search Attributes](#default-search-attributes)
+    * [Combining Search Classes](#combining-search-classes)
+* [Usage with Rails](#usage-with-rails)
+* [Testing](#testing)
+    * [Testing Default Scope](#testing-default-scope)
+    * [Testing Default Search Attributes](#testing-default-search-attributes)
+    * [Testing Each Scope Method Individually](#testing-each-scope-method-individually)
+* [Benchmarks](#benchmarks)
+    * [Lupa vs HasScope](#lupa-vs-hasscope)
+    * [Lupa vs Searchlight](#lupa-vs-searchlight)
+* [Installation](#installation)
 
 
 ## Search Class
