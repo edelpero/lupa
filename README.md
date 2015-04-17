@@ -6,7 +6,7 @@ Lupa means *Magnifier* in spanish.
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns.
 
-Lupa it's Framework and ORM agnostic. It will work with any ORM or Object that can build a query using **chained method calls**, like ActiveRecord: `
+Lupa is Framework and ORM agnostic. It will work with any ORM or Object that can build a query using **chained method calls**, like ActiveRecord: `
 Product.where(name: 'Digital').where(category: '23').limit(2)`.
 
 **Table of Contents:**
