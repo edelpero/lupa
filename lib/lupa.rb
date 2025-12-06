@@ -41,7 +41,7 @@ require "lupa/version"
 #   # Can now use the class method
 #   products = ProductSearch.search(name: 'chair')
 #
-# @author Emanuel Del Pero
+# @author Ezequiel Delpero
 # @since 0.1.0
 module Lupa
   # Raised when attempting to use the class method `search` without defining
