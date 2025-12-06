@@ -1,5 +1,9 @@
-require 'coveralls'
-Coveralls.wear!
+# Coveralls gem uses Hash#slice which was added in Ruby 2.5
+# Only load Coveralls for Ruby 2.5+
+if RUBY_VERSION >= '2.5.0'
+  require 'coveralls'
+  Coveralls.wear!
+end
 
 require 'minitest/autorun'
 

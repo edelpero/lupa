@@ -2,7 +2,7 @@
 
 Lupa means *Magnifier* in spanish.
 
-[![Build Status](https://travis-ci.org/edelpero/lupa.svg?branch=master)](https://travis-ci.org/edelpero/lupa) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Inline docs](http://inch-ci.org/github/edelpero/lupa.svg?branch=master)](http://inch-ci.org/github/edelpero/lupa)
+[![CI](https://github.com/edelpero/lupa/actions/workflows/ci.yml/badge.svg)](https://github.com/edelpero/lupa/actions/workflows/ci.yml) [![Coverage Status](https://coveralls.io/repos/edelpero/lupa/badge.svg?branch=master)](https://coveralls.io/r/edelpero/lupa?branch=master) [![Code Climate](https://codeclimate.com/github/edelpero/lupa/badges/gpa.svg)](https://codeclimate.com/github/edelpero/lupa) [![Inline docs](http://inch-ci.org/github/edelpero/lupa.svg?branch=master)](http://inch-ci.org/github/edelpero/lupa)
 
 Lupa lets you create simple, robust and scaleable search filters with ease using regular Ruby classes and object oriented design patterns.
 
